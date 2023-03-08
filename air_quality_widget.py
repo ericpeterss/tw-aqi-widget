@@ -1,7 +1,8 @@
-import requests
-import tkinter as tk
-from dotenv import load_dotenv
 import os
+import time
+import tkinter as tk
+import requests
+from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
 
@@ -9,11 +10,16 @@ API_KEY = os.getenv('API_KEY')
 
 def get_air_quality():
     url = f'https://data.epa.gov.tw/api/v2/aqx_p_432?api_key={API_KEY}'
-    response = requests.get(url)
-    data = response.json()
-    site_name = data['records'][68]["sitename"]
-    aqi = data['records'][68]["aqi"]
-    return site_name, aqi
+    while True:
+        try:
+            response = requests.get(url)
+            data = response.json()
+            site_name = data['records'][68]["sitename"]
+            aqi = data['records'][68]["aqi"]
+            return site_name, aqi
+        except requests.exceptions.JSONDecodeError:
+            print('Failed to decode JSON data. Retrying in 30 seconds...')
+            time.sleep(30)
 
 def update_widget():
     site_name, aqi = get_air_quality()
