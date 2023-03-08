@@ -6,9 +6,7 @@ A widget that displays the air quality index (AQI) for a specific location in Ta
 2. Install the required Python libraries: pip install -r requirements.txt
 3. Create a file named .env in the root directory of the project with the following contents:
 
-'''makefile
-API_KEY=YOUR_API_KEY
-'''
+<code>API_KEY=YOUR_API_KEY</code>
 
 Replace YOUR_API_KEY with your API key for the Taiwanese Environmental Protection Administration air quality data API.
 
