@@ -14,20 +14,22 @@ def get_air_quality():
         try:
             response = requests.get(url)
             data = response.json()
-            site_name = data['records'][68]["sitename"]
-            aqi = data['records'][68]["aqi"]
-            return site_name, aqi
+            site_name1 = data['records'][68]["sitename"]
+            aqi1 = data['records'][68]["aqi"]
+            site_name2 = data['records'][14]["sitename"]
+            aqi2 = data['records'][14]["aqi"]
+            return site_name1, aqi1, site_name2, aqi2
         except requests.exceptions.JSONDecodeError:
             print('Failed to decode JSON data. Retrying in 30 seconds...')
             time.sleep(30)
 
 def update_widget():
-    site_name, aqi = get_air_quality()
-    label.config(text='Site Name: {}\nAQI: {}'.format(site_name, aqi))
+    site_name1, aqi1, site_name2, aqi2 = get_air_quality()
+    label.config(text='Site Name: {}\nAQI: {}\nSite Name: {}\nAQI: {}'.format(site_name1, aqi1, site_name2, aqi2))
     # Change the background color based on the AQI value
-    if int(aqi) <= 50:
+    if int(aqi1) and int(aqi2) <= 50:
         window.configure(background='green')
-    elif int(aqi) < 100:
+    elif int(aqi1) and int(aqi2) < 100:
         window.configure(background='yellow')
     else:
         window.configure(background='red')
@@ -41,10 +43,10 @@ window = tk.Tk()
 window.title('Air Quality Widget')
 
 # Set the width and height of the window
-window.geometry('200x50')
+window.geometry('200x70')
 
 # Create a label to display the air quality index
-label = tk.Label(window, text='Site Name: \nAQI: ')
+label = tk.Label(window, text='Site Name: \nAQI: \nSite Name: \nAQI: ')
 label.pack()
 
 # Call the update_widget function to update the label with the air quality index
