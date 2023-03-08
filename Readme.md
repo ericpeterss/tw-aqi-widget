@@ -2,12 +2,14 @@
 A widget that displays the air quality index (AQI) for a specific location in Taiwan.
 
 ## Installation
-1. Clone this repository: git clone https://github.com/YOUR-USERNAME/air-quality-widget.git
+1. Clone this repository: git clone https://github.com/ericpeterss/tw-aqi-widget.git
 2. Install the required Python libraries: pip install -r requirements.txt
 3. Create a file named .env in the root directory of the project with the following contents:
+
 '''makefile
 API_KEY=YOUR_API_KEY
 '''
+
 Replace YOUR_API_KEY with your API key for the Taiwanese Environmental Protection Administration air quality data API.
 
 ## Usage
@@ -20,7 +22,7 @@ Replace YOUR_API_KEY with your API key for the Taiwanese Environmental Protectio
 You can customize the behavior of the widget by modifying the following variables in the air_quality_widget.py file:
 
 - API_KEY: Your API key for the Taiwanese Environmental Protection Administration air quality data API.
-- SITE_INDEX: The index of the location to retrieve data for. The default value is 68, which corresponds to a location in Taipei.
+- SITE_INDEX: The index of the location to retrieve data for. The default value is 68, which corresponds to YongHe in New Taipei City.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
