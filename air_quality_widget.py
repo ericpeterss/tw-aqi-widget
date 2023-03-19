@@ -1,3 +1,13 @@
+"""
+air_quality_widget.py
+
+This script creates a simple air quality widget using Tkinter. It fetches air quality index (AQI) data from the EPA API and displays the AQI values for two specific sites. The background color of the widget changes based on the AQI values.
+
+Functions:
+    - get_air_quality(): Fetches AQI data from the EPA API and returns the site names and AQI values for two specific sites.
+    - update_widget(): Updates the widget's label with the latest AQI data and changes the background color based on the AQI values.
+"""
+
 import os
 import time
 import tkinter as tk
